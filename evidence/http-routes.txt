@@ -1,0 +1,3 @@
+/auth/loI3
+/auth/seI3
+/sync/socksGET

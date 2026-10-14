@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.glitr.app</id>
+  <name>Glitr</name>
+  <summary>Private messenger — your git repo is the mailbox</summary>
+  <developer_name>Positive Intentions</developer_name>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>AGPL-3.0-only</project_license>
+  <url type="homepage">https://glitr.io</url>
+  <launchable type="desktop-id">Glitr.desktop</launchable>
+  <icon type="stock">glitr</icon>
+  <description>
+    <p>
+      Glitr is a private messenger. There is no central chat server. Encrypted
+      messages live in a git repository you own. When you are both online, Glitr
+      can open a live link over Tor or WebRTC. When you are not, send falls back
+      to the mailbox.
+    </p>
+    <p>
+      Works offline. Pair for a live session. Voice and video on an open live
+      link. This project is unaudited — read the documentation at glitr.io
+      before relying on it.
+    </p>
+  </description>
+  <categories>
+    <category>Network</category>
+    <category>InstantMessaging</category>
+  </categories>
+  <content_rating type="oars-1.1"/>
+</component>

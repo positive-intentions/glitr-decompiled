@@ -1,0 +1,22 @@
+{
+  "plaintext": "OFFICIAL_GOLDEN_1",
+  "outbound_keys": [
+    "ackReadReceiptIds",
+    "body",
+    "ciphertext",
+    "createdAt",
+    "groupId",
+    "id",
+    "recipientId",
+    "senderId"
+  ],
+  "ciphertext_shape": {
+    "v": 3,
+    "scheme": "str:7",
+    "finalCiphertext": "str:6168",
+    "outerParameters": "str:2144"
+  },
+  "outbound_id": "c89d651e-8876-4f98-9f03-e92463698533",
+  "recipientId": "869cabbf-52ec-4373-9263-c84b665e3d4a",
+  "senderId": "b8f0255d-d5be-45fa-8ccb-ecc9a4735094"
+}

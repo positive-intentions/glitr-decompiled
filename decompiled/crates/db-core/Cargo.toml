@@ -1,0 +1,14 @@
+[package]
+name = "db-core"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+crypto-core = { path = "../crypto-core" }
+git-core = { path = "../git-core" }
+messaging-schema = { path = "../messaging-schema" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }

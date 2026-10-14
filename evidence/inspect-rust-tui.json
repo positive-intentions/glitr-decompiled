@@ -1,0 +1,16 @@
+{
+  "code": "COMMAND_NOT_FOUND",
+  "message": "'inspect-rust-binary' is not a command for 'rea'. Did you mean 'inspect-artifact'?",
+  "cta": {
+    "description": "Suggested commands:",
+    "commands": [
+      {
+        "command": "rea inspect-artifact /home/raju/repositories/rea/target/glitr-tui-linux --json"
+      },
+      {
+        "command": "rea --help",
+        "description": "see all available commands"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+[package]
+name = "git-core"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+thiserror = { workspace = true }
+serde = { workspace = true }

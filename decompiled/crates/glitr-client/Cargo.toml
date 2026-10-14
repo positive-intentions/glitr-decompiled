@@ -1,0 +1,12 @@
+[package]
+name = "glitr-client"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+api-core = { path = "../api-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }

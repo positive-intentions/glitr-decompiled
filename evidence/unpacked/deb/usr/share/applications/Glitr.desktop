@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Network;
+Comment=Private messenger. Your git repo is the mailbox.
+Exec=/usr/bin/glitr
+Icon=glitr
+Name=Glitr
+Terminal=false
+Type=Application

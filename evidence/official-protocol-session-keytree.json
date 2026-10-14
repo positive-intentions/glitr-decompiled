@@ -1,0 +1,32 @@
+{
+  "signal": {
+    "root_key": "intlist:32",
+    "sending_chain_key": "intlist:32",
+    "receiving_chain_key": null,
+    "sending_dh_keypair": {
+      "public_key": "intlist:32",
+      "private_key": "intlist:32"
+    },
+    "receiving_dh_public_key": null,
+    "sending_message_number": 1,
+    "receiving_message_number": 0,
+    "previous_chain_length": 0,
+    "skipped_message_keys": {}
+  },
+  "pqxdh": {
+    "root_key": "intlist:32",
+    "sending_chain_key": "intlist:32",
+    "receiving_chain_key": null,
+    "sending_dh_keypair": {
+      "public_key": "intlist:32",
+      "private_key": "intlist:32"
+    },
+    "receiving_dh_public_key": null,
+    "sending_message_number": 1,
+    "receiving_message_number": 0,
+    "previous_chain_length": 0,
+    "skipped_message_keys": {}
+  },
+  "mlsGroupState": "intlist:6047",
+  "weAreInitiator": true
+}

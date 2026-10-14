@@ -1,0 +1,146 @@
+schema @app(name: "messaging", version: 10) {
+  query: Query
+}
+
+type Query {
+  _empty: Boolean
+}
+
+type ProfilePublic @document(path: "profile-public.json") {
+  id: ID!
+  publicKey: String!
+  protocolBundles: String
+  retiredProfileIds: String
+}
+
+type Device @collection(dir: "devices") {
+  id: ID!
+  label: String
+  platform: String
+  onionAddress: String
+  createdAt: Int
+  lastSeenAt: Int
+  retiredProfileId: String
+}
+
+type ProfileSecrets @document(path: "profile-secrets.json") @encrypted {
+  id: ID!
+  displayName: String!
+  handle: String!
+  privateKey: String!
+  protocolSecrets: String
+}
+
+type Contact @collection(dir: "contacts") @encrypted {
+  id: ID!
+  peerProfileId: ID!
+  gitUrl: String!
+  displayName: String!
+  username: String
+  token: String
+  lastPolledAt: Int
+  clockOffsetMs: Int
+  connectionStatus: String
+  lastVerifyError: String
+  peerPublicKey: String
+  peerProtocolBundles: String
+  localOnionAddress: String
+  gitMailbox: String
+  peerDevices: String
+  gitEnabled: String
+  torEnabled: String
+  webrtcEnabled: String
+  stunUrl: String
+  forceStun: String
+}
+
+type OutboundMessage @collection(dir: "outbound") {
+  id: ID!
+  recipientId: ID!
+  senderId: ID!
+  ciphertext: String!
+  body: String
+  createdAt: Int
+  ackReadReceiptIds: String
+  groupId: ID
+}
+
+type ReadReceipt @collection(dir: "readreceipts") {
+  id: ID!
+  messageId: ID!
+  senderId: ID!
+  readAt: Int
+}
+
+type InboxMessage @collection(dir: "inbox") @encrypted {
+  id: ID!
+  senderId: ID!
+  body: String!
+  outboundMessageId: ID!
+  fromContactId: ID!
+  receivedAt: Int
+  createdAt: Int
+  attachmentName: String
+  attachmentMime: String
+  attachmentSize: Int
+  attachmentData: String
+  groupId: ID
+}
+
+type SentMessage @collection(dir: "sent") @encrypted {
+  id: ID!
+  contactId: ID!
+  recipientId: ID!
+  body: String!
+  outboundMessageId: ID!
+  createdAt: Int
+  readAt: Int
+  attachmentName: String
+  attachmentMime: String
+  attachmentSize: Int
+  attachmentData: String
+  groupId: ID
+}
+
+type Group @collection(dir: "groups") @encrypted {
+  id: ID!
+  title: String!
+  memberProfileIds: String!
+  createdAt: Int
+}
+
+type SignalingSession @collection(dir: "signaling") {
+  id: ID!
+  recipientId: ID!
+  senderId: ID!
+  role: String
+  ciphertext: String!
+  updatedAt: Int
+  fromDeviceId: String
+  toDeviceId: String
+}
+
+type ProtocolSession @collection(dir: "protocol-sessions") @encrypted {
+  id: ID!
+  contactId: ID!
+  state: String!
+}
+
+type GroupProtocolSession @collection(dir: "group-protocol-sessions") @encrypted {
+  id: ID!
+  groupId: ID!
+  state: String!
+}
+
+type FileTransfer @collection(dir: "file-transfers") @encrypted {
+  id: ID!
+  contactId: ID!
+  direction: String!
+  name: String!
+  mime: String
+  size: Int!
+  ciphertext: String!
+  bytesDone: Int!
+  phase: String!
+  createdAt: Int
+}

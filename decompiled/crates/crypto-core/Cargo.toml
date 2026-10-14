@@ -1,0 +1,20 @@
+[package]
+name = "crypto-core"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+base64 = { workspace = true }
+thiserror = { workspace = true }
+rand = { workspace = true }
+sha2 = { workspace = true }
+aes-gcm = { workspace = true }
+argon2 = { workspace = true }
+rsa = { workspace = true }
+hkdf = { workspace = true }
+zeroize = { workspace = true }
+hex = { workspace = true }
+libcrux-ml-kem = { version = "=0.0.10", default-features = false, features = ["mlkem1024", "std"] }

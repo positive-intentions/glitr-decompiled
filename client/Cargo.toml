@@ -1,0 +1,18 @@
+[package]
+name = "glitr-compat-client"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Compatible git-mailbox client for the Glitr investigation workspace"
+
+[[bin]]
+name = "glitr-compat"
+path = "src/main.rs"
+
+[dependencies]
+api-core = { path = "../decompiled/crates/api-core" }
+glitr-client = { path = "../decompiled/crates/glitr-client" }
+messaging-schema = { path = "../decompiled/crates/messaging-schema" }
+clap = { version = "4", features = ["derive", "env"] }
+anyhow = "1"
+serde_json = "1"

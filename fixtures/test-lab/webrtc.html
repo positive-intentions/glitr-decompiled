@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Glitr recon WebRTC lab</title>
+  <style>
+    body { font-family: ui-sans-serif, system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+    textarea, input { width: 100%; box-sizing: border-box; margin: 0.25rem 0 0.75rem; }
+    button { margin-right: 0.5rem; margin-bottom: 0.5rem; }
+    #log { white-space: pre-wrap; background: #111; color: #eee; padding: 1rem; min-height: 8rem; }
+    .row { display: flex; gap: 0.5rem; align-items: center; }
+  </style>
+</head>
+<body>
+  <h1>Glitr recon WebRTC lab</h1>
+  <p>Recon↔recon data-channel test. Uses STUN <code>stun:stun.l.google.com:19302</code> (same default as recon contacts). Signaling can be copy/pasted or posted via <code>glitr-compat signal</code>.</p>
+  <label>Local role</label>
+  <select id="role"><option>offer</option><option>answer</option></select>
+  <label>Remote SDP (paste then set remote)</label>
+  <textarea id="remote" rows="6"></textarea>
+  <div>
+    <button id="start">Create local offer/answer</button>
+    <button id="setRemote">Set remote description</button>
+    <button id="send">Send chat</button>
+  </div>
+  <label>Local SDP (copy to peer)</label>
+  <textarea id="local" rows="6" readonly></textarea>
+  <label>Chat text</label>
+  <input id="msg" value="hello from recon webrtc" />
+  <div id="log"></div>
+  <script>
+    const STUN = { iceServers: [{ urls: "stun:stun.l.google.com:19302" }] };
+    const logEl = document.getElementById("log");
+    const log = (s) => { logEl.textContent += s + "\n"; };
+    let pc, channel;
+
+    function frameChat(body) {
+      return JSON.stringify({ type: "chat", body });
+    }
+
+    document.getElementById("start").onclick = async () => {
+      pc = new RTCPeerConnection(STUN);
+      pc.onicecandidate = (e) => {
+        if (!e.candidate) {
+          document.getElementById("local").value = JSON.stringify(pc.localDescription);
+          log("local description ready");
+        }
+      };
+      pc.ondatachannel = (ev) => {
+        channel = ev.channel;
+        channel.onmessage = (m) => log("recv: " + m.data);
+        log("datachannel from peer");
+      };
+      const role = document.getElementById("role").value;
+      if (role === "offer") {
+        channel = pc.createDataChannel("glitr");
+        channel.onmessage = (m) => log("recv: " + m.data);
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+        log("created offer");
+      } else {
+        log("waiting for remote offer — paste then Set remote");
+      }
+    };
+
+    document.getElementById("setRemote").onclick = async () => {
+      const desc = JSON.parse(document.getElementById("remote").value);
+      await pc.setRemoteDescription(desc);
+      if (desc.type === "offer") {
+        const answer = await pc.createAnswer();
+        await pc.setLocalDescription(answer);
+        log("created answer");
+      }
+    };
+
+    document.getElementById("send").onclick = () => {
+      const body = document.getElementById("msg").value;
+      if (!channel || channel.readyState !== "open") {
+        log("channel not open");
+        return;
+      }
+      channel.send(frameChat(body));
+      log("sent chat frame");
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "code": "COMMAND_NOT_FOUND",
+  "message": "'inspect-wasm-artifact' is not a command for 'rea'. Did you mean 'inspect-artifact'?",
+  "cta": {
+    "description": "Suggested commands:",
+    "commands": [
+      {
+        "command": "rea inspect-artifact /home/raju/repositories/rea/target/glitr-web/assets/glitr_bg-7636cad733f406ee.wasm --json"
+      },
+      {
+        "command": "rea --help",
+        "description": "see all available commands"
+      }
+    ]
+  }
+}

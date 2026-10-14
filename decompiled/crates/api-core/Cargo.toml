@@ -1,0 +1,24 @@
+[package]
+name = "api-core"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[dependencies]
+crypto-core = { path = "../crypto-core" }
+crypto-cascade = { path = "../crypto-cascade" }
+db-core = { path = "../db-core" }
+git-core = { path = "../git-core" }
+messaging-schema = { path = "../messaging-schema" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+anyhow = { workspace = true }
+base64 = { workspace = true }
+rsa = { workspace = true }
+sha2 = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

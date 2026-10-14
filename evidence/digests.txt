@@ -1,0 +1,14 @@
+# Artifact digests
+
+3cf9c44ccd0f7d99a1d6be307d9d2c1767e2360c80b243f93f318dfcedb773b0  glitr-tui-linux
+53f5c733d9e49e3a096b192a0522a6b5bbde45aec9322f7ef42a4d47ec0ee64e  glitr-linux.deb
+4e2d3174a776fd3361d6dbc4eb8a64d69640f69e5767235e128e0aa7826a1196  glitr-android.apk
+
+## glitr-web key assets
+3843053d69e3a5cfd9737bca0f1dc5a4205e9e5aed8f63d9681ff6edd33e7fa2  glitr-web/version.json
+bc2c3c734989c5d1237806742534ece667f0303bbc18a1195306be5709a96999  glitr-web/assets/glitr_bg-7636cad733f406ee.wasm
+6c9b20f9ecfbab31a764252f089c556efd72a9f85a8047bc2870d35c4398bc3f  glitr-web/assets/glitr-6d3b3e9890684672.js
+{
+  "version": "56498d4ea157",
+  "builtAt": "2026-10-06T12:21:02Z"
+}
